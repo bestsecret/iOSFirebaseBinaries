@@ -123,7 +123,10 @@ let package = Package(
                 .target(name: "FirebasePerformance", condition: .when(platforms: [.iOS, .tvOS])),
                 "FirebaseRemoteConfig"
             ],
-            path: "Sources/FirebasePerformance"
+            path: "Sources/FirebasePerformance",
+            linkerSettings: [
+                .unsafeFlags(["-ObjC"])
+            ]
         ),
         .target(
             name: "FirebaseRemoteConfigTarget",
@@ -133,7 +136,10 @@ let package = Package(
                 "FirebaseABTesting",
                 "FirebaseRemoteConfig"
             ],
-            path: "Sources/FirebaseRemoteConfig"
+            path: "Sources/FirebaseRemoteConfig",
+            linkerSettings: [
+                .unsafeFlags(["-ObjC"])
+            ]
         ),
         .binaryTarget(
             name: "FirebaseABTesting",
