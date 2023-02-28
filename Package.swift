@@ -51,15 +51,15 @@ let package = Package(
             name: "FirebaseAnalyticsTarget",
             dependencies: [
                 "Firebase",
+                "FBLPromises",
                 "FirebaseAnalytics",
+                "FirebaseAnalyticsSwift",
                 "FirebaseCore",
-                "FirebaseCoreDiagnostics",
+                "FirebaseCoreInternal",
                 "FirebaseInstallations",
                 "GoogleAppMeasurement",
                 "GoogleAppMeasurementIdentitySupport",
-                "GoogleDataTransport",
                 "GoogleUtilities",
-                "PromisesObjC",
                 "nanopb"
             ],
             path: "Sources/FirebaseAnalytics"
@@ -79,7 +79,8 @@ let package = Package(
             dependencies: [
                 "Firebase",
                 "FirebaseAnalyticsTarget",
-                "FirebaseCrashlytics"
+                "FirebaseCrashlytics",
+                "GoogleDataTransport"
             ],
             path: "Sources/FirebaseCrashlytics",
             exclude: [
@@ -93,6 +94,8 @@ let package = Package(
                 "Firebase",
                 "FirebaseAnalyticsTarget",
                 "FirebaseDatabase",
+                "FirebaseDatabaseSwift",
+                "FirebaseSharedSwift",
                 "leveldb-library"
             ],
             path: "Sources/FirebaseDatabase"
@@ -109,8 +112,9 @@ let package = Package(
         .target(
             name: "FirebaseInstallationsTarget",
             dependencies: [
-                "Firebase",
-                "FirebaseInstallations",
+                "FirebaseCore",
+                "FBLPromises",
+                "GoogleUtilities"
             ],
             path: "Sources/FirebaseInstallations"
         ),
@@ -121,7 +125,8 @@ let package = Package(
                 "FirebaseAnalyticsTarget",
                 "FirebaseABTesting",
                 .target(name: "FirebasePerformance", condition: .when(platforms: [.iOS, .tvOS])),
-                "FirebaseRemoteConfig"
+                "FirebaseRemoteConfig",
+                "GoogleDataTransport"
             ],
             path: "Sources/FirebasePerformance"
         ),
@@ -131,104 +136,126 @@ let package = Package(
                 "Firebase",
                 "FirebaseAnalyticsTarget",
                 "FirebaseABTesting",
-                "FirebaseRemoteConfig"
+                "FirebaseRemoteConfig",
+                "FirebaseRemoteConfigSwift",
+                "FirebaseSharedSwift"
             ],
             path: "Sources/FirebaseRemoteConfig"
         ),
         .binaryTarget(
+            name: "FBLPromises",
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FBLPromises.xcframework.zip",
+            checksum: "24e32d3dbb800f98d25bcd4fdf7d37e1f8d7742f36ecf2f375f6480d924b87ce"
+        ),
+        .binaryTarget(
             name: "FirebaseABTesting",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseABTesting.xcframework.zip",
-            checksum: "0cfe97fce76a313ad5ee7d38e52306856688a740e588f57d224dd8bfa00788d1"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseABTesting.xcframework.zip",
+            checksum: "8f22df5e8eb4e608aa24582d0f5d62951a533c6c64091cbc2dc7a8d7a59ad35d"
         ),
         .binaryTarget(
             name: "FirebaseAnalytics",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseAnalytics.xcframework.zip",
-            checksum: "42ac890e2e9cce4d24fd78a95fab0d7f626a8cb5fde8ff3011e5d336a776b80b"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseAnalytics.xcframework.zip",
+            checksum: "3fe3389ed5bf7f61d43a7b57dbce5af32f9e6ea340cf53b76eaf31f879347966"
+        ),
+        .binaryTarget(
+          name: "FirebaseAnalyticsSwift",
+          url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseAnalyticsSwift.xcframework.zip",
+          checksum: "e6b440a89eb31fdb3f34b3b67dcbd87e3bae6d44b3bc2c8d79aadd3689e7bfdf"
         ),
         .binaryTarget(
             name: "FirebaseAuth",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseAuth.xcframework.zip",
-            checksum: "86f904aa9d953f0f8536565e6347ccfeb35a9f37fe6599a4758d97c7431c7fb3"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseAuth.xcframework.zip",
+            checksum: "ff1253d4382a98a06667f68f14a9cc5e1512172f2e5f09b49ebc71c7001c44d5"
         ),
         .binaryTarget(
             name: "FirebaseCore",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseCore.xcframework.zip",
-            checksum: "4388e4f2b575c2e9cd91c7a58337d9277098a06f02c062f079214826498b7bad"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseCore.xcframework.zip",
+            checksum: "ffc20569edee0d537de5778ea6c5646d120298b401cc926b5da1f03b1d07c9ba"
         ),
         .binaryTarget(
-            name: "FirebaseCoreDiagnostics",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseCoreDiagnostics.xcframework.zip",
-            checksum: "4d0edcd0bcea5dfed683223b45bd131530027b5e3251007638ca226b3161ff84"
+          name: "FirebaseCoreInternal",
+          url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseCoreInternal.xcframework.zip",
+          checksum: "6acc4179c1822cf553e40f2613b14226c12cfddba7b0e25dd518744413349eec"
         ),
         .binaryTarget(
             name: "FirebaseCrashlytics",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseCrashlytics.xcframework.zip",
-            checksum: "0597777a281e1abc184d93c9a766ffa79bc6d4b5efa26f2f9e1fb01d596e540f"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseCrashlytics.xcframework.zip",
+            checksum: "679a7cf5aef53a326969ebb103c1da826f9e930fc9769146c7140dc4a9770f6d"
         ),
         .binaryTarget(
             name: "FirebaseDatabase",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseDatabase.xcframework.zip",
-            checksum: "6a2d4e8008763609a90fc71908fa8985e8bf741b0f0ec74fcf16dc46d0c3b710"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseDatabase.xcframework.zip",
+            checksum: "46d9d7915b2054296b97f1b66b5db10c46ace789b4899278cda332ff006d9482"
+        ),
+        .binaryTarget(
+          name: "FirebaseDatabaseSwift",
+          url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseDatabaseSwift.xcframework.zip",
+          checksum: "3783750dcb917df7542e5e0c7230406e80918fafdccb87a70b829e69aa0c638a"
         ),
         .binaryTarget(
             name: "FirebaseDynamicLinks",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseDynamicLinks.xcframework.zip",
-            checksum: "b8d9987973d27418959c3f37caafbb71d05aa637c2cb84e8b18c2ac61c94659d"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseDynamicLinks.xcframework.zip",
+            checksum: "dcf11847d8757f24dee033dd77a259af68e89bf100feaedff47b6a51980fdf01"
         ),
         .binaryTarget(
             name: "FirebaseInstallations",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseInstallations.xcframework.zip",
-            checksum: "47627c5179423b0d13d90d3cd7e4a022a9ca5a57765130fc1aad8e91519f5bca"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseInstallations.xcframework.zip",
+            checksum: "a35caa805d39d441ccea3c22305e65e0b26902ed8157b6a994641a4feb3a43bb"
         ),
         .binaryTarget(
             name: "FirebasePerformance",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebasePerformance.xcframework.zip",
-            checksum: "c90c9700825d98328fc4e718cc32296d1163add99666b3551c8137d64b528454"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebasePerformance.xcframework.zip",
+            checksum: "aa9d4de13886e7d6268cde011e016f5c50422842a1f446ee151f62fdf5a0215c"
         ),
         .binaryTarget(
             name: "FirebaseRemoteConfig",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/FirebaseRemoteConfig.xcframework.zip",
-            checksum: "35601b769f0b20bdfc3daeb103df414dc8e455dd84734470378a23faf936d6c7"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseRemoteConfig.xcframework.zip",
+            checksum: "75b8fca29a8a3abbfcca3c5d49ac894bb93f0d24f8f6e3347d9206a87831bb7e"
+        ),
+        .binaryTarget(
+          name: "FirebaseRemoteConfigSwift",
+          url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseRemoteConfigSwift.xcframework.zip",
+          checksum: "748452b54e510a26b8c37ac5bced511b3b1fbce060fc83e5754c33ac305e5c04"
+        ),
+        .binaryTarget(
+          name: "FirebaseSharedSwift",
+          url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/FirebaseSharedSwift.xcframework.zip",
+          checksum: "553b397d767b6f0d5301e59d10a281056045e81587696f4beceb44aeec8c8f2d"
         ),
         .binaryTarget(
             name: "GTMSessionFetcher",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/GTMSessionFetcher.xcframework.zip",
-            checksum: "081c5b76de29fe415a39bddba04892d94d74cd3ed358ea8b975f021ca7269df0"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/GTMSessionFetcher.xcframework.zip",
+            checksum: "8d57735db13a631e124a79d1343e52cdb5034e24fe3be72f8d40872f15eed95e"
         ),
         .binaryTarget(
             name: "GoogleAppMeasurement",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/GoogleAppMeasurement.xcframework.zip",
-            checksum: "6202f8d3a4239ed14c5330bead862cefb5d43994545b82aaee59ee90c7bebe0d"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/GoogleAppMeasurement.xcframework.zip",
+            checksum: "6fb897bce2c53cfe8d2b8964997993162e2c0a3f94549f4614f3cecf3d2f7a05"
         ),
         .binaryTarget(
             name: "GoogleAppMeasurementIdentitySupport",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/GoogleAppMeasurementIdentitySupport.xcframework.zip",
-            checksum: "e4f1195dcf8b8ca436c7b46b7bb9958c8b92f798e2e7b6365078e9132b5fc71b"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/GoogleAppMeasurementIdentitySupport.xcframework.zip",
+            checksum: "b3f7a1fecf38884d73f4af2ee0f4e03efb3081d030d92cca6c6b8e456575a0b6"
         ),
         .binaryTarget(
             name: "GoogleDataTransport",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/GoogleDataTransport.xcframework.zip",
-            checksum: "0ef7f4761318253926e1fc5703ac5102c4c532e71a2f3e2ab2fd1989ef3779b8"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/GoogleDataTransport.xcframework.zip",
+            checksum: "193ca557b5a15f3783f3bcaeede3af29a809d5226ebeddf7290717da008420e0"
         ),
         .binaryTarget(
             name: "GoogleUtilities",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/GoogleUtilities.xcframework.zip",
-            checksum: "637d33ad4adffe095de7f09cfc66d9c7bbb0a006e0a8cf8c3968011fc072d878"
-        ),
-        .binaryTarget(
-            name: "PromisesObjC",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/PromisesObjC.xcframework.zip",
-            checksum: "57b50ee70fda6533801f5404f279f32d96369aed2b4adf506a2db3cdf11b048d"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/GoogleUtilities.xcframework.zip",
+            checksum: "f9931c13b5f322a9bb9e2e4b584dc098f497de2037c2ebc8ae62ddf0301ac960"
         ),
         .binaryTarget(
             name: "leveldb-library",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/leveldb-library.xcframework.zip",
-            checksum: "3a50acf8016d54572131f51675df7dc629554a51f7e9b40e5e8bc74e53a76b66"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/leveldb-library.xcframework.zip",
+            checksum: "ba6af294598a76a295662929bcfe7e97b5e4680494c494705a9b9c04eddf5720"
         ),
         .binaryTarget(
             name: "nanopb",
-            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/8.15.0/nanopb.xcframework.zip",
-            checksum: "393f3e1a4c864d8968e4c0eff351daaa16dfa7d2973d39a22b0865a18aa14763"
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.5.0/nanopb.xcframework.zip",
+            checksum: "b21654bbb61f63de60890011e1dec705bb7f07ef7aebacfa49bb48b6465a96e0"
         )
     ]
 )
