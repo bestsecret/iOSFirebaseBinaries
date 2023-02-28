@@ -105,7 +105,7 @@ let package = Package(
             dependencies: [
                 "Firebase",
                 "FirebaseAnalyticsTarget",
-                .target(name: "FirebaseDynamicLinks", condition: .when(platforms: [.iOS]))
+                .target(name: "_FirebaseDynamicLinks", condition: .when(platforms: [.iOS]))
             ],
             path: "Sources/FirebaseDynamicLinks"
         ),
@@ -124,7 +124,7 @@ let package = Package(
                 "Firebase",
                 "FirebaseAnalyticsTarget",
                 "_FirebaseABTesting",
-                .target(name: "FirebasePerformance", condition: .when(platforms: [.iOS, .tvOS])),
+                .target(name: "_FirebasePerformance", condition: .when(platforms: [.iOS, .tvOS])),
                 "_FirebaseRemoteConfig",
                 "_GoogleDataTransport"
             ],
