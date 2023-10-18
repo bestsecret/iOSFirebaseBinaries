@@ -81,7 +81,8 @@ let package = Package(
                 "FirebaseAnalyticsTarget",
                 "_FirebaseCrashlytics",
                 "_FirebaseSessions",
-                "_GoogleDataTransport"
+                "_GoogleDataTransport",
+                "_PromisesSwift"
             ],
             path: "Sources/FirebaseCrashlytics",
             exclude: [
@@ -128,7 +129,8 @@ let package = Package(
                 "_FirebaseSessions",
                 .target(name: "_FirebasePerformance", condition: .when(platforms: [.iOS, .tvOS])),
                 "_FirebaseRemoteConfig",
-                "_GoogleDataTransport"
+                "_GoogleDataTransport",
+                "_PromisesSwift"
             ],
             path: "Sources/FirebasePerformance"
         ),
@@ -263,6 +265,11 @@ let package = Package(
             name: "_nanopb",
             url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.16.0/_nanopb.xcframework.zip",
             checksum: "fcfff340d90a6f9f8411616ede906914d55a7d0db2a2384d506e6a15d1893675"
+        ),
+        .binaryTarget(
+            name: "_PromisesSwift",
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.16.0/_PromisesSwift.xcframework.zip",
+            checksum: "bf7242d8985116ac4e265b58f239fcd26321b758c9470a0d804800d544dd37d2"
         )
     ]
 )
