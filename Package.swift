@@ -80,6 +80,7 @@ let package = Package(
                 "Firebase",
                 "FirebaseAnalyticsTarget",
                 "_FirebaseCrashlytics",
+                "_FirebaseSessions",
                 "_GoogleDataTransport"
             ],
             path: "Sources/FirebaseCrashlytics",
@@ -124,6 +125,7 @@ let package = Package(
                 "Firebase",
                 "FirebaseAnalyticsTarget",
                 "_FirebaseABTesting",
+                "_FirebaseSessions",
                 .target(name: "_FirebasePerformance", condition: .when(platforms: [.iOS, .tvOS])),
                 "_FirebaseRemoteConfig",
                 "_GoogleDataTransport"
@@ -216,6 +218,11 @@ let package = Package(
           name: "_FirebaseRemoteConfigSwift",
           url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.16.0/_FirebaseRemoteConfigSwift.xcframework.zip",
           checksum: "693c120d3d9b5249e6e15d22fcaee1f656537e737baee80a008735a49bdfe1ad"
+        ),
+        .binaryTarget(
+            name: "_FirebaseSessions",
+            url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.16.0/_FirebaseSessions.xcframework.zip",
+            checksum: "5a733e5dd7ae504e4f3d054b768249cbd2a5e9e0212d80fee1b2d555ad036ccd"
         ),
         .binaryTarget(
           name: "_FirebaseSharedSwift",
