@@ -70,7 +70,9 @@ let package = Package(
                 "Firebase",
                 "FirebaseAnalyticsTarget",
                 "_FirebaseAuth",
-                "_GTMSessionFetcher"
+                "_FirebaseAppCheckInterop",
+                "_GTMSessionFetcher",
+                "_RecaptchaInterop"
             ],
             path: "Sources/FirebaseAuth"
         ),
@@ -95,6 +97,7 @@ let package = Package(
             dependencies: [
                 "Firebase",
                 "FirebaseAnalyticsTarget",
+                "_FirebaseAppCheckInterop",
                 "_FirebaseDatabase",
                 "_FirebaseDatabaseSwift",
                 "_FirebaseSharedSwift",
@@ -165,6 +168,11 @@ let package = Package(
           name: "_FirebaseAnalyticsSwift",
           url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.16.0/_FirebaseAnalyticsSwift.xcframework.zip",
           checksum: "e570f7b26cb61507ef2ee10bd045464623c25cc4e8fe2eb48d01f5fb9fcd5936"
+        ),
+        .binaryTarget(
+          name: "_FirebaseAppCheckInterop",
+          url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.16.0/_FirebaseAppCheckInterop.xcframework.zip",
+          checksum: "1c6a827f679639920b10b8f02c4ae2bfd119a61549df627e59fde70ad4b87ce7"
         ),
         .binaryTarget(
             name: "_FirebaseAuth",
@@ -270,6 +278,11 @@ let package = Package(
             name: "_PromisesSwift",
             url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.16.0/_PromisesSwift.xcframework.zip",
             checksum: "bf7242d8985116ac4e265b58f239fcd26321b758c9470a0d804800d544dd37d2"
-        )
+        ),
+        .binaryTarget(
+          name: "_RecaptchaInterop",
+          url: "https://github.com/bestsecret/iOSFirebaseBinaries/releases/download/10.16.0/_RecaptchaInterop.xcframework.zip",
+          checksum: "d01ccadc2ed8ac04d111d3b111f9dd0e0c792433341f14c20db610d978bfe6a5"
+        ),
     ]
 )
